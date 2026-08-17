@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &amp; Scheduling — Rodrumming</title>
+<meta name="description" content="Book a live video drum fundamentals lesson with Rohan. Contact info, scheduling, and frequently asked questions about equipment, lesson length, and video platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="/" class="brand">
+      <span class="brand-word">Ro<b>drumming</b></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/" data-nav="/">Home</a>
+      <a href="/about/" data-nav="/about/">About</a>
+      <a href="/lessons/" data-nav="/lessons/">Lessons &amp; Approach</a>
+      <a href="/contact/" data-nav="/contact/">Contact</a>
+    </nav>
+
+    <a href="#booking" class="btn btn-primary nav-cta desktop-only">
+      <i data-lucide="calendar-days"></i> Book a Lesson
+    </a>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <i data-lucide="menu"></i>
+    </button>
+  </div>
+
+  <div class="mobile-panel">
+    <a href="/" data-nav="/">Home</a>
+    <a href="/about/" data-nav="/about/">About</a>
+    <a href="/lessons/" data-nav="/lessons/">Lessons &amp; Approach</a>
+    <a href="/contact/" data-nav="/contact/">Contact</a>
+    <a href="#booking" class="btn btn-primary btn-block">
+      <i data-lucide="calendar-days"></i> Book a Lesson
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Contact &amp; Scheduling</div>
+      <h1>Let's get a lesson on the calendar.</h1>
+      <p class="lede">Send a few details below and I'll follow up to confirm a time — or reach out directly by email.</p>
+    </div>
+  </section>
+
+  <!-- BOOKING + CONTACT -->
+  <section class="section" id="booking">
+    <div class="container contact-grid">
+
+      <div data-reveal>
+        <div class="form-card">
+          <h2>Request a Lesson</h2>
+          <p class="free-lesson-note"><i data-lucide="gift"></i> Your first lesson is free — no commitment.</p>
+          <p class="form-note">Submitting sends your request straight to Rohan's inbox — no payment or calendar booking yet, just a fast way to get a lesson time confirmed.</p>
+
+          <form id="booking-form">
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="level">Experience Level</label>
+                <select id="level" name="level">
+                  <option value="beginner">Complete Beginner</option>
+                  <option value="self-taught">Self-Taught</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="platform">Preferred Video Platform</label>
+                <select id="platform" name="platform">
+                  <option value="zoom">Zoom</option>
+                  <option value="google-meet">Google Meet</option>
+                  <option value="facetime">FaceTime</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="time">Preferred Days / Times</label>
+              <input type="text" id="time" name="time" placeholder="e.g. Weekday evenings, after 6pm">
+            </div>
+
+            <div class="field">
+              <label for="message">What do you want to work on?</label>
+              <textarea id="message" name="message" placeholder="Sticking technique, rudiments, timing — anything specific is helpful."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i data-lucide="send"></i> Request Lesson Time
+            </button>
+            <p id="form-status" class="form-status" role="status"></p>
+          </form>
+        </div>
+      </div>
+
+      <div data-reveal>
+        <div class="contact-card">
+          <div class="card-icon"><i data-lucide="mail"></i></div>
+          <div>
+            <h3>Email</h3>
+            <p>rohan@rodrumming.com</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="card-icon"><i data-lucide="video"></i></div>
+          <div>
+            <h3>Lesson Platform</h3>
+            <p>Zoom by default — Google Meet or FaceTime available on request.</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="card-icon"><i data-lucide="clock"></i></div>
+          <div>
+            <h3>Response Time</h3>
+            <p>I typically reply within 1–2 business days to confirm a time.</p>
+          </div>
+        </div>
+
+        <div class="scheduler-placeholder">
+          <i data-lucide="calendar-clock"></i>
+          <strong>Scheduling embed placeholder</strong>
+          A live calendar (Calendly-style embed) will go here so students can pick an open time slot directly.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head section-head--center" data-reveal>
+        <div class="eyebrow">FAQ</div>
+        <h2>Common questions</h2>
+      </div>
+
+      <div style="max-width:760px; margin:0 auto;" data-reveal>
+
+        <div class="faq-item is-open">
+          <button class="faq-q">
+            Is the first lesson really free?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>Yes. Your first lesson is free, with no commitment to book more. It's a chance for us to meet, for me to see where your technique is at, and for you to decide if the format is a fit.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Do I need a drum kit for these lessons?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>No. Rodrumming lessons are fundamentals-focused and use sticks and a practice pad (or a similar firm surface). Drum kit and ensemble playing are not part of this curriculum.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What equipment do I actually need?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>A pair of drumsticks, a practice pad (or a pillow / firm surface to start), and a device with a camera for video calling. That's it — no kit or additional gear required.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How long is each lesson?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>Standard lessons run 30 or 45 minutes, depending on what's booked. Exact scheduling and lengths are confirmed directly with me.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What video platform do you use?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>Zoom is the default, but Google Meet, FaceTime, or another platform can be arranged if that's easier for you.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            I already play — is this still useful?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>Yes. Many students are self-taught or intermediate/advanced players who want to clean up specific technique issues, tighten rudiments, or sharpen timing — the lessons scale to your level.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Will I eventually learn full drum kit playing?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>Not through Rodrumming directly — this program is intentionally scoped to fundamentals on sticks and pad. The technique you build here transfers directly if you move on to kit lessons elsewhere.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          Rodrumming
+        </div>
+        <p style="max-width:32ch;">1-on-1 drum fundamentals, taught live over video. Sticks and a practice pad — no kit required.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/lessons/">Lessons &amp; Approach</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="footer-links">
+          <li><i data-lucide="mail"></i> rohan@rodrumming.com</li>
+          <li><i data-lucide="video"></i> Lessons via Zoom</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Rodrumming. All rights reserved.</span>
+      <span>Fundamentals-first drum instruction — sticks &amp; pad, not full kit.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
