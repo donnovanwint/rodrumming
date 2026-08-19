@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* Booking form — posts to /api/contact, which emails Rohan via Resend --------- */
+  /* Booking form — posts to Formspree (formspree.io), which emails Rodrumming@outlook.com --- */
   var form = document.getElementById('booking-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -52,13 +52,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var status = document.getElementById('form-status');
       var submitBtn = form.querySelector('button[type="submit"]');
-      var payload = Object.fromEntries(new FormData(form).entries());
 
       function setStatus(text, isError) {
         if (!status) return;
         status.textContent = text;
         status.classList.add('is-visible');
         status.classList.toggle('is-error', !!isError);
+      }
+
+      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
+        setStatus('Form is not configured yet — add your Formspree form ID in contact/index.html.', true);
+        return;
       }
 
       if (submitBtn) {
@@ -68,15 +72,18 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       if (status) status.classList.remove('is-visible', 'is-error');
 
-      fetch('/api/contact', {
+      fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        headers: { Accept: 'application/json' },
+        body: new FormData(form)
       })
         .then(function (res) {
+          if (res.ok) return res;
           return res.json().catch(function () { return {}; }).then(function (data) {
-            if (!res.ok) throw new Error(data.error || 'Something went wrong. Please email Rodrumming@outlook.com directly.');
-            return data;
+            var message = data && data.errors && data.errors.length
+              ? data.errors.map(function (e) { return e.message; }).join(' ')
+              : 'Something went wrong. Please email Rodrumming@outlook.com directly.';
+            throw new Error(message);
           });
         })
         .then(function () {

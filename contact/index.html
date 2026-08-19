@@ -65,7 +65,10 @@
           <p class="free-lesson-note"><i data-lucide="gift"></i> Your first lesson is free — no commitment.</p>
           <p class="form-note">Submitting sends your request straight to Rohan's inbox — no payment or calendar booking yet, just a fast way to get a lesson time confirmed.</p>
 
-          <form id="booking-form">
+          <form id="booking-form" action="https://formspree.io/f/xbgrqklz" method="POST">
+            <input type="hidden" name="_subject" value="New Rodrumming lesson request">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;" aria-hidden="true">
+
             <div class="field-row">
               <div class="field">
                 <label for="name">Name</label>

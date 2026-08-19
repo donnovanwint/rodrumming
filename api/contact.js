@@ -1,6 +1,13 @@
 // Vercel serverless function: POST /api/contact
 // Sends the "Request a Lesson" form to Rohan via the Resend API.
 //
+// STANDBY: the live contact form currently posts to Formspree instead (see
+// contact/index.html), because Resend requires a verified custom domain to
+// deliver to arbitrary recipients and this project is still on a free
+// vercel.app domain. Once a domain is purchased and verified at
+// resend.com/domains, point the form back at /api/contact for a native
+// integration with no third-party dependency.
+//
 // Required env var: RESEND_API_KEY (set in Vercel Project Settings → Environment Variables,
 // and in a local .env file for `vercel dev`).
 //
