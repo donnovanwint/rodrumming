@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
       })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (data) {
-            if (!res.ok) throw new Error(data.error || 'Something went wrong. Please email rohan@rodrumming.com directly.');
+            if (!res.ok) throw new Error(data.error || 'Something went wrong. Please email Rodrumming@outlook.com directly.');
             return data;
           });
         })
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
           form.reset();
         })
         .catch(function (err) {
-          setStatus(err.message || 'Something went wrong. Please email rohan@rodrumming.com directly.', true);
+          setStatus(err.message || 'Something went wrong. Please email Rodrumming@outlook.com directly.', true);
         })
         .finally(function () {
           if (submitBtn) {

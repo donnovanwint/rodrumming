@@ -5,13 +5,17 @@
 // and in a local .env file for `vercel dev`).
 //
 // Optional env vars:
-//   CONTACT_TO_EMAIL   — inbox that receives lesson requests (defaults to rohan@rodrumming.com)
+//   CONTACT_TO_EMAIL   — inbox(es) that receive lesson requests (comma-separated for
+//                        multiple, e.g. "Rodrumming@outlook.com,someone-else@example.com").
+//                        Defaults to Rodrumming@outlook.com.
 //   CONTACT_FROM_EMAIL — verified sender address (defaults to Resend's shared sandbox sender)
 //
 // NOTE: Until a domain is verified at resend.com/domains, Resend's sandbox sender
 // (onboarding@resend.dev) can only deliver to the email address the Resend account
-// was signed up with. Set CONTACT_TO_EMAIL to that address for testing, then switch
-// it to rohan@rodrumming.com once the domain is verified.
+// was signed up with — and it validates every recipient, so listing a second address
+// here will make the ENTIRE send fail, not just silently skip the invalid one. Keep
+// CONTACT_TO_EMAIL to that single testing address until a domain is verified, then
+// switch to Rodrumming@outlook.com (optionally with more addresses appended).
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -35,7 +39,7 @@ const LEVEL_LABELS = {
 const PLATFORM_LABELS = {
   zoom: 'Zoom',
   'google-meet': 'Google Meet',
-  facetime: 'FaceTime',
+  teams: 'Microsoft Teams',
   other: 'Other'
 };
 
@@ -66,7 +70,10 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Email service is not configured yet.' });
   }
 
-  const toEmail = process.env.CONTACT_TO_EMAIL || 'rohan@rodrumming.com';
+  const toEmails = (process.env.CONTACT_TO_EMAIL || 'Rodrumming@outlook.com')
+    .split(',')
+    .map((addr) => addr.trim())
+    .filter(Boolean);
   const fromEmail = process.env.CONTACT_FROM_EMAIL || 'Rodrumming Website <onboarding@resend.dev>';
 
   const html = `
@@ -88,7 +95,7 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [toEmail],
+        to: toEmails,
         reply_to: email,
         subject: `New lesson request from ${name}`,
         html
