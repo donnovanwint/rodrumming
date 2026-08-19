@@ -192,7 +192,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 0;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .brand {
@@ -204,28 +205,10 @@ p {
   letter-spacing: -0.01em;
 }
 
-/* Logo placeholder: square icon mark + wordmark lockup */
-.brand-mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 9px;
-  background: var(--ink);
-  color: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-
-.brand-mark span {
-  line-height: 1;
-}
-
-.brand-word b {
-  color: var(--accent-dark);
+.brand-logo {
+  height: 34px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
@@ -1014,11 +997,6 @@ body.nav-open .mobile-panel {
   color: var(--bg);
   font-weight: 800;
   margin-bottom: 12px;
-}
-
-.footer-brand .brand-mark {
-  background: var(--accent);
-  color: #fff;
 }
 
 .site-footer h4 {
