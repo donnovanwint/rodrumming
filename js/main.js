@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .to('.hero-actions', { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
         .to('.free-lesson-note', { opacity: 1, y: 0, duration: 0.4 }, '-=0.25')
         .to('.hero-features', { opacity: 1, y: 0, duration: 0.5 }, '-=0.2')
-        .to('.hero-visual', { opacity: 1, x: 0, duration: 0.7 }, '-=0.6');
+        .to('.hero-photo-bg', { opacity: 1, duration: 0.8 }, '-=0.6');
     }
 
     // Gentle hero parallax
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   } else {
     // No GSAP / reduced motion: just show everything
-    document.querySelectorAll('[data-reveal], .hero-title, .hero-lede, .hero-actions, .free-lesson-note, .hero-features, .hero-visual').forEach(function (el) {
+    document.querySelectorAll('[data-reveal], .hero-title, .hero-lede, .hero-actions, .free-lesson-note, .hero-features, .hero-photo-bg').forEach(function (el) {
       el.style.opacity = 1;
       el.style.transform = 'none';
     });
