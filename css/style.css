@@ -60,10 +60,10 @@ h2,
 h3,
 h4 {
   font-family: var(--font-body);
-  font-weight: 700;
-  line-height: 1.15;
+  font-weight: 800;
+  line-height: 1.1;
   margin: 0 0 0.5em;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 h1 {
@@ -93,6 +93,24 @@ p {
   text-transform: uppercase;
   color: var(--accent-dark);
   margin-bottom: 1em;
+}
+
+/* Hand-drawn-style underline accent under a headline phrase */
+.accent-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.accent-underline::after {
+  content: "";
+  position: absolute;
+  left: 0.05em;
+  right: 0.05em;
+  bottom: -0.1em;
+  height: 0.16em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 14 Q 25 4, 50 14 T 100 14 T 150 14 T 198 14' fill='none' stroke='%23FF6300' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .container {
@@ -133,7 +151,7 @@ p {
   justify-content: center;
   gap: 0.6em;
   padding: 14px 28px;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   font-weight: 700;
   font-size: 0.98rem;
   border: 2px solid transparent;
@@ -220,8 +238,10 @@ p {
 .nav-links a {
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--ink-soft);
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -321,31 +341,6 @@ body.nav-open .mobile-panel {
   flex: none;
 }
 
-.hero-flags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 22px;
-  margin-top: 36px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.hero-flag {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-
-.hero-flag svg {
-  width: 18px;
-  height: 18px;
-  color: var(--accent-dark);
-  flex: none;
-}
-
 .hero-visual {
   position: relative;
 }
@@ -378,32 +373,6 @@ body.nav-open .mobile-panel {
   width: 20px;
   height: 20px;
   color: var(--accent);
-}
-
-.no-kit-banner {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 16px;
-  margin-top: 18px;
-}
-
-.no-kit-banner svg {
-  width: 20px;
-  height: 20px;
-  color: var(--accent-dark);
-  flex: none;
-  margin-top: 1px;
-}
-
-.no-kit-banner p {
-  margin: 0;
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-}
-
-.no-kit-banner strong {
-  color: var(--ink);
 }
 
 /* Feature grid ---------------------------------------------------------- */
@@ -476,25 +445,19 @@ body.nav-open .mobile-panel {
   letter-spacing: -0.02em;
 }
 
-.credibility-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 20px;
+.instructor-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
-.credibility-row .stat b {
+.instructor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  font-size: 1.5rem;
-  color: var(--ink);
-}
-
-.credibility-row .stat span {
-  font-size: 0.82rem;
-  color: var(--ink-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
 }
 
 /* Drum-hit illustration ------------------------------------------------ */
@@ -541,13 +504,6 @@ body.nav-open .mobile-panel {
   object-fit: cover;
   object-position: 28% 52%;
   display: block;
-}
-
-/* Feature variant: photo bleeds to the card edges and carries the hero visual on its own */
-.drum-photo--feature {
-  margin: calc(var(--panel-pad) * -1) calc(var(--panel-pad) * -1) 20px;
-  border-radius: var(--radius) var(--radius) 0 0;
-  aspect-ratio: 5 / 4;
 }
 
 .drumviz-caption {
@@ -1059,11 +1015,11 @@ body.nav-open .mobile-panel {
   opacity: 0;
 }
 
-.hero-eyebrow,
 .hero-title,
 .hero-lede,
 .hero-actions,
-.hero-flags {
+.free-lesson-note,
+.hero-features {
   opacity: 0;
   transform: translateY(20px);
 }
@@ -1071,6 +1027,213 @@ body.nav-open .mobile-panel {
 .hero-visual {
   opacity: 0;
   transform: translateX(20px);
+}
+
+/* ==========================================================================
+   Homepage redesign components (icon badges, hero features, approach grid,
+   stat row, numbered process steps, light CTA variant)
+   ========================================================================== */
+
+/* Icon badge — circular icon container, used in hero features, approach grid,
+   and instructor stats */
+.icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.icon-badge svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent-dark);
+}
+
+.icon-badge--outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+}
+
+.icon-badge--outline svg {
+  color: var(--accent);
+}
+
+.icon-badge--sm {
+  width: 38px;
+  height: 38px;
+}
+
+.icon-badge--sm svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Hero photo — real lifestyle photo, no card chrome */
+.hero-photo {
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow: var(--shadow-md);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hero feature rows — stacked icon + two-line label */
+.hero-features {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.hero-feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero-feature-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* Approach grid — headline + 3 feature items in one divided row (stacks on mobile) */
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.approach-item h2 {
+  font-size: 1.5rem;
+}
+
+.approach-item {
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
+}
+
+.approach-item:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.approach-item .icon-badge {
+  margin-bottom: 18px;
+}
+
+.approach-item h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.approach-item p {
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+/* Stat row — instructor credibility stats with icons */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-item-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-item-text b {
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.stat-item-text span {
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Numbered process steps — "What a lesson looks like" */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.process-step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+.process-step h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.process-step p {
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+}
+
+.process-step-icon {
+  color: var(--ink-faint);
+}
+
+.process-step-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Light CTA banner variant */
+.cta-banner--light {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.cta-banner--light h2 {
+  color: var(--ink);
+}
+
+.cta-banner--light p {
+  color: var(--ink-soft);
 }
 
 /* Utility ------------------------------------------------------------------ */
@@ -1156,6 +1319,28 @@ body.nav-open .mobile-panel {
     grid-template-columns: 1fr;
   }
 
+  .approach-grid,
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .approach-item {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .approach-item:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .hero-photo {
+    aspect-ratio: 4 / 3;
+  }
+
   .field-row {
     grid-template-columns: 1fr;
   }
@@ -1165,7 +1350,8 @@ body.nav-open .mobile-panel {
     text-align: left;
   }
 
-  .avatar-placeholder {
+  .avatar-placeholder,
+  .instructor-photo {
     max-width: 160px;
   }
 

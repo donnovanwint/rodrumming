@@ -127,13 +127,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Hero entrance (plays immediately, not scroll-gated)
     var heroTl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-    if (document.querySelector('.hero-eyebrow')) {
+    if (document.querySelector('.hero-title')) {
       heroTl
-        .to('.hero-eyebrow', { opacity: 1, y: 0, duration: 0.5 })
-        .to('.hero-title', { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
+        .to('.hero-title', { opacity: 1, y: 0, duration: 0.6 })
         .to('.hero-lede', { opacity: 1, y: 0, duration: 0.6 }, '-=0.35')
         .to('.hero-actions', { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
-        .to('.hero-flags', { opacity: 1, y: 0, duration: 0.5 }, '-=0.25')
+        .to('.free-lesson-note', { opacity: 1, y: 0, duration: 0.4 }, '-=0.25')
+        .to('.hero-features', { opacity: 1, y: 0, duration: 0.5 }, '-=0.2')
         .to('.hero-visual', { opacity: 1, x: 0, duration: 0.7 }, '-=0.6');
     }
 
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   } else {
     // No GSAP / reduced motion: just show everything
-    document.querySelectorAll('[data-reveal], .hero-eyebrow, .hero-title, .hero-lede, .hero-actions, .hero-flags, .hero-visual').forEach(function (el) {
+    document.querySelectorAll('[data-reveal], .hero-title, .hero-lede, .hero-actions, .free-lesson-note, .hero-features, .hero-visual').forEach(function (el) {
       el.style.opacity = 1;
       el.style.transform = 'none';
     });
