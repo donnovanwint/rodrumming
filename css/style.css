@@ -360,7 +360,7 @@ body.nav-open .mobile-panel {
 
 .free-lesson-note {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   margin-top: 16px;
   font-size: 0.9rem;
@@ -372,6 +372,7 @@ body.nav-open .mobile-panel {
   width: 18px;
   height: 18px;
   flex: none;
+  margin-top: 2px;
 }
 
 .hero-panel {
