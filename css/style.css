@@ -742,7 +742,7 @@ body.nav-open .mobile-panel {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 40px;
   align-items: start;
 }
@@ -763,6 +763,11 @@ body.nav-open .mobile-panel {
   font-weight: 700;
   font-size: 0.88rem;
   margin-bottom: 8px;
+}
+
+.field label .muted {
+  font-weight: 400;
+  color: var(--ink-faint);
 }
 
 .field input,
@@ -1236,6 +1241,10 @@ body.nav-open .mobile-panel {
   gap: 32px;
 }
 
+.process-steps--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .process-step-num {
   width: 36px;
   height: 36px;
@@ -1543,6 +1552,119 @@ body.nav-open .mobile-panel {
   display: block;
 }
 
+/* ==========================================================================
+   Contact page form components (pill-toggle radios, day checkbox grid)
+   ========================================================================== */
+
+.pill-toggle {
+  display: flex;
+  gap: 12px;
+}
+
+.pill-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.pill-toggle input:checked + label {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.pill-toggle input:focus-visible + label {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.day-checks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px 16px;
+}
+
+.day-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.day-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  flex: none;
+}
+
+.form-trust-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.form-trust-note svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.sidebar-questions {
+  margin-top: 24px;
+}
+
+.sidebar-questions .icon-badge {
+  margin-bottom: 12px;
+}
+
+.sidebar-questions h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.sidebar-contact-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.sidebar-contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 8px 0;
+}
+
+.sidebar-contact-list svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-dark);
+  flex: none;
+}
+
 /* Utility ------------------------------------------------------------------ */
 
 .text-center {
@@ -1710,6 +1832,10 @@ body.nav-open .mobile-panel {
 
   .cta-photo {
     display: none;
+  }
+
+  .day-checks {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .field-row {
