@@ -715,6 +715,10 @@ body.nav-open .mobile-panel {
   flex-wrap: wrap;
 }
 
+.cta-banner > div:first-child {
+  max-width: 620px;
+}
+
 .cta-banner h2 {
   color: var(--bg);
   margin-bottom: 8px;
@@ -1438,6 +1442,107 @@ body.nav-open .mobile-panel {
   height: 20px;
 }
 
+/* ==========================================================================
+   About page components (story grid, callout card, trust stat grid,
+   panel wrapper, CTA photo)
+   ========================================================================== */
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.callout-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.callout-card .icon-badge {
+  margin-bottom: 16px;
+}
+
+.callout-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.callout-highlights {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.callout-highlights p {
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 4px;
+}
+
+.callout-highlights p:last-child {
+  margin-bottom: 0;
+}
+
+/* Trust stat grid — icon above value above caption, divided columns */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.trust-item {
+  text-align: center;
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+
+.trust-item:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.trust-item .icon-badge {
+  margin: 0 auto 14px;
+}
+
+.trust-item b {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.trust-item span {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Generic contained panel wrapper (bg-alt card within a normal section) */
+.panel-card {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 48px;
+}
+
+/* CTA banner photo variant */
+.cta-photo {
+  width: 220px;
+  height: 170px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex: none;
+}
+
+.cta-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Utility ------------------------------------------------------------------ */
 
 .text-center {
@@ -1582,6 +1687,28 @@ body.nav-open .mobile-panel {
   }
 
   .cta-illustration {
+    display: none;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 28px;
+  }
+
+  .trust-item:nth-child(2n+1) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .panel-card {
+    padding: 28px 20px;
+  }
+
+  .cta-photo {
     display: none;
   }
 
