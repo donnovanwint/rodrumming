@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* Booking form — posts to Formspree (formspree.io), which emails Rodrumming@outlook.com --- */
+  /* Booking form — posts to /api/contact, a Vercel serverless function that emails
+     the request to Rodrumming@outlook.com via Resend. --- */
   var form = document.getElementById('booking-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -60,10 +61,22 @@ document.addEventListener('DOMContentLoaded', function () {
         status.classList.toggle('is-error', !!isError);
       }
 
-      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
-        setStatus('Form is not configured yet — add your Formspree form ID in contact/index.html.', true);
-        return;
-      }
+      var formData = new FormData(form);
+
+      // Honeypot — a real visitor never fills this in.
+      if (formData.get('_gotcha')) return;
+
+      var payload = {
+        name: formData.get('name') || '',
+        email: formData.get('email') || '',
+        phone: formData.get('phone') || '',
+        level: formData.get('level') || '',
+        platform: formData.get('platform') || '',
+        lesson_length: formData.get('lesson_length') || '',
+        preferred_days: formData.getAll('preferred_days'),
+        time_range: formData.get('time_range') || '',
+        message: formData.get('message') || ''
+      };
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -74,16 +87,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
       fetch(form.action, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form)
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
       })
         .then(function (res) {
-          if (res.ok) return res;
           return res.json().catch(function () { return {}; }).then(function (data) {
-            var message = data && data.errors && data.errors.length
-              ? data.errors.map(function (e) { return e.message; }).join(' ')
-              : 'Something went wrong. Please email Rodrumming@outlook.com directly.';
-            throw new Error(message);
+            if (!res.ok) {
+              var apiMessage = data && typeof data.error === 'string' ? data.error : '';
+              throw new Error(apiMessage || 'Something went wrong. Please email Rodrumming@outlook.com directly.');
+            }
+            return data;
           });
         })
         .then(function () {
@@ -91,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
           form.reset();
         })
         .catch(function (err) {
-          setStatus(err.message || 'Something went wrong. Please email Rodrumming@outlook.com directly.', true);
+          setStatus((err && err.message) || 'Something went wrong. Please email Rodrumming@outlook.com directly.', true);
         })
         .finally(function () {
           if (submitBtn) {

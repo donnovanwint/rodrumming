@@ -4,24 +4,24 @@
    ========================================================================== */
 
 :root {
-  --bg: #F7F4EE;
-  --bg-alt: #EDE7DB;
+  --bg: #FFFFFF;
+  --bg-alt: #F5F6F8;
   --panel: #FFFFFF;
-  --ink: #201C18;
-  --ink-soft: #5B5449;
-  --ink-faint: #8B8375;
+  --ink: #14171A;
+  --ink-soft: #4B5157;
+  --ink-faint: #868C93;
   --accent: #FF6300;
-  --accent-dark: #A64000;
+  --accent-dark: #CC4E00;
   --accent-ink: #FFFFFF;
-  --line: #E2D9C8;
-  --focus: #2E6E62;
+  --line: #E4E7EC;
+  --focus: #1F7A6C;
 
-  --radius: 10px;
-  --radius-sm: 6px;
+  --radius: 14px;
+  --radius-sm: 8px;
   --container: 1120px;
 
-  --shadow-sm: 0 1px 2px rgba(32, 28, 24, 0.06);
-  --shadow-md: 0 8px 24px rgba(32, 28, 24, 0.08);
+  --shadow-sm: 0 1px 2px rgba(20, 23, 26, 0.05);
+  --shadow-md: 0 16px 40px rgba(20, 23, 26, 0.09), 0 2px 8px rgba(20, 23, 26, 0.05);
 
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -201,8 +201,8 @@ p {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(247, 244, 238, 0.92);
-  backdrop-filter: saturate(140%) blur(8px);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -324,7 +324,7 @@ body.nav-open .mobile-panel {
 
 /* Hero photo — bleeds flush to the top/right/bottom of the section, with a
    left-edge fade blending it into the page background. Hardcoded rgb values
-   match --bg (#F7F4EE) since custom properties can't drive a gradient stop's
+   match --bg (#FFFFFF) since custom properties can't drive a gradient stop's
    transparent endpoint. */
 .hero-photo-bg {
   position: absolute;
@@ -340,7 +340,7 @@ body.nav-open .mobile-panel {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to right, #F7F4EE 0%, rgba(247, 244, 238, 0) 38%);
+  background: linear-gradient(to right, #FFFFFF 0%, rgba(255, 255, 255, 0) 38%);
   pointer-events: none;
 }
 
@@ -525,7 +525,7 @@ body.nav-open .mobile-panel {
   border-radius: var(--radius-sm);
   overflow: hidden;
   aspect-ratio: 4 / 3;
-  background: rgba(247, 244, 238, 0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .drum-photo img {
@@ -539,9 +539,9 @@ body.nav-open .mobile-panel {
 .drumviz-caption {
   margin-top: 22px;
   padding-top: 18px;
-  border-top: 1px solid rgba(247, 244, 238, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 0.85rem;
-  color: rgba(247, 244, 238, 0.65);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .drumviz-caption strong {
@@ -726,13 +726,13 @@ body.nav-open .mobile-panel {
 }
 
 .cta-banner p {
-  color: rgba(247, 244, 238, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0;
 }
 
 .cta-banner .btn-ghost {
   color: var(--bg);
-  border-color: rgba(247, 244, 238, 0.35);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .cta-banner .btn-ghost:hover {
@@ -972,7 +972,7 @@ body.nav-open .mobile-panel {
 
 .site-footer {
   background: var(--ink);
-  color: rgba(247, 244, 238, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   padding: 56px 0 32px;
   margin-top: 40px;
 }
@@ -982,7 +982,7 @@ body.nav-open .mobile-panel {
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 32px;
-  border-bottom: 1px solid rgba(247, 244, 238, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .footer-brand {
@@ -1013,7 +1013,7 @@ body.nav-open .mobile-panel {
 }
 
 .footer-links a {
-  color: rgba(247, 244, 238, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.92rem;
 }
 
@@ -1356,6 +1356,13 @@ body.nav-open .mobile-panel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
+}
+
+/* Variant for a 3-item row — avoids a lopsided empty 4th column */
+.plain-feature-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .plain-feature-item {
@@ -1709,7 +1716,7 @@ body.nav-open .mobile-panel {
   }
 
   .hero-photo-bg::before {
-    background: linear-gradient(to bottom, #F7F4EE 0%, rgba(247, 244, 238, 0) 22%);
+    background: linear-gradient(to bottom, #FFFFFF 0%, rgba(255, 255, 255, 0) 22%);
   }
 
   .hero > .container {

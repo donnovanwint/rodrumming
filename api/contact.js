@@ -1,12 +1,5 @@
 // Vercel serverless function: POST /api/contact
-// Sends the "Request a Lesson" form to Rohan via the Resend API.
-//
-// STANDBY: the live contact form currently posts to Formspree instead (see
-// contact/index.html), because Resend requires a verified custom domain to
-// deliver to arbitrary recipients and this project is still on a free
-// vercel.app domain. Once a domain is purchased and verified at
-// resend.com/domains, point the form back at /api/contact for a native
-// integration with no third-party dependency.
+// Sends the "Schedule a Lesson" form to Rohan via the Resend API.
 //
 // Required env var: RESEND_API_KEY (set in Vercel Project Settings → Environment Variables,
 // and in a local .env file for `vercel dev`).
@@ -57,11 +50,22 @@ module.exports = async function handler(req, res) {
   }
 
   const body = req.body || {};
+
+  // Honeypot — a real visitor never fills this in.
+  if (typeof body._gotcha === 'string' && body._gotcha.trim()) {
+    return res.status(200).json({ ok: true });
+  }
+
   const name = typeof body.name === 'string' ? body.name.trim() : '';
   const email = typeof body.email === 'string' ? body.email.trim() : '';
+  const phone = typeof body.phone === 'string' ? body.phone.trim() : '';
   const level = typeof body.level === 'string' ? body.level : '';
   const platform = typeof body.platform === 'string' ? body.platform : '';
-  const time = typeof body.time === 'string' ? body.time.trim() : '';
+  const lessonLength = typeof body.lesson_length === 'string' ? body.lesson_length.trim() : '';
+  const preferredDays = Array.isArray(body.preferred_days)
+    ? body.preferred_days.filter((day) => typeof day === 'string' && day.trim())
+    : [];
+  const timeRange = typeof body.time_range === 'string' ? body.time_range.trim() : '';
   const message = typeof body.message === 'string' ? body.message.trim() : '';
 
   if (!name || !email) {
@@ -87,9 +91,12 @@ module.exports = async function handler(req, res) {
     <h2 style="margin:0 0 16px;">New lesson request</h2>
     <p><strong>Name:</strong> ${escapeHtml(name)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>
     <p><strong>Experience level:</strong> ${escapeHtml(LEVEL_LABELS[level] || level || 'Not specified')}</p>
     <p><strong>Preferred video platform:</strong> ${escapeHtml(PLATFORM_LABELS[platform] || platform || 'Not specified')}</p>
-    <p><strong>Preferred days/times:</strong> ${escapeHtml(time || 'Not specified')}</p>
+    <p><strong>Preferred lesson length:</strong> ${escapeHtml(lessonLength || 'Not specified')}</p>
+    <p><strong>Preferred days:</strong> ${escapeHtml(preferredDays.length ? preferredDays.join(', ') : 'Not specified')}</p>
+    <p><strong>Best time range:</strong> ${escapeHtml(timeRange || 'Not specified')}</p>
     <p><strong>What they want to work on:</strong><br>${escapeHtml(message || 'Not specified').replace(/\n/g, '<br>')}</p>
   `;
 

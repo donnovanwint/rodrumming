@@ -52,7 +52,7 @@
     <div class="container">
       <div class="hero-copy">
         <div class="eyebrow">Contact</div>
-        <h1 class="hero-title">Let's get you<br><span class="accent-underline">started.</span></h1>
+        <h1 class="hero-title">Let's set<br><span class="accent-underline">the tempo.</span></h1>
         <p class="lede hero-lede">Ready to build real technique, confidence, and a strong foundation —
           starting on the practice pad? Fill out the form below and I'll follow up to confirm a time.</p>
       </div>
@@ -120,8 +120,7 @@
           <p class="free-lesson-note"><i data-lucide="gift"></i> Your first lesson is free — no commitment. After that, it's just $30 for 30 minutes.</p>
           <p class="form-note">Tell me a little about you. I'll follow up to confirm availability — no payment or calendar booking yet, just a fast way to get a lesson time confirmed.</p>
 
-          <form id="booking-form" action="https://formspree.io/f/xbgrqklz" method="POST">
-            <input type="hidden" name="_subject" value="New Rodrumming lesson request">
+          <form id="booking-form" action="/api/contact" method="POST">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;" aria-hidden="true">
 
             <div class="field-row">
