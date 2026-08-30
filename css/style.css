@@ -810,6 +810,19 @@ body.nav-open .mobile-panel {
   margin-bottom: 20px;
 }
 
+.field-hint {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.field-hint a {
+  color: var(--focus);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 .form-status {
   display: none;
   margin-top: 14px;

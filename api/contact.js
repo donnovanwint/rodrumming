@@ -37,8 +37,6 @@ const LEVEL_LABELS = {
 };
 
 const PLATFORM_LABELS = {
-  zoom: 'Zoom',
-  'google-meet': 'Google Meet',
   teams: 'Microsoft Teams',
   other: 'Other'
 };

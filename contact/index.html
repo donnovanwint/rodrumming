@@ -78,7 +78,7 @@
           <div class="card-icon"><i data-lucide="video"></i></div>
           <div>
             <h3>Live Video Lessons</h3>
-            <p>All lessons are held online via Zoom (Google Meet or Microsoft Teams available on request) from a quiet, focused space.</p>
+            <p>All lessons are held online via Microsoft Teams (another platform can be arranged on request) from a quiet, focused space.</p>
           </div>
         </div>
         <div class="contact-card">
@@ -154,11 +154,10 @@
             <div class="field">
               <label for="platform">Preferred Video Platform</label>
               <select id="platform" name="platform">
-                <option value="zoom">Zoom</option>
-                <option value="google-meet">Google Meet</option>
                 <option value="teams">Microsoft Teams</option>
                 <option value="other">Other</option>
               </select>
+              <p class="field-hint">Before your lesson, see the <a href="#faq">FAQ</a> for how to turn off Teams' noise suppression — it makes a big difference for hearing your playing clearly.</p>
             </div>
 
             <div class="field">
@@ -243,7 +242,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section section--alt">
+  <section class="section section--alt" id="faq">
     <div class="container">
       <div class="section-head section-head--center" data-reveal>
         <div class="eyebrow">FAQ</div>
@@ -308,7 +307,19 @@
             <i data-lucide="plus"></i>
           </button>
           <div class="faq-a">
-            <p>Zoom is the default, but Google Meet, Microsoft Teams, or another platform can be arranged if that's easier for you.</p>
+            <p>Microsoft Teams is the default, but another platform can be arranged if that's easier for you.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How do I turn off noise suppression on Microsoft Teams?
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq-a">
+            <p>Teams' default noise suppression is built for cancelling background noise, so it can flatten or mute the transient sound of sticks hitting a pad — which makes it harder for me to hear your playing clearly. Turn it off before we start:</p>
+            <p><strong>Before the call:</strong> Open Teams → click your profile picture → <strong>Settings</strong> → <strong>Devices</strong> → scroll to <strong>Noise suppression</strong> → set it to <strong>Off</strong> (or <strong>Low</strong> if Off isn't available on your version).</p>
+            <p><strong>During the call:</strong> Click the <strong>More</strong> (•••) menu in your meeting controls → <strong>Settings</strong> → <strong>Manage noise suppression</strong> → select <strong>Off</strong>.</p>
           </div>
         </div>
 
@@ -375,7 +386,7 @@
         <h4>Get in touch</h4>
         <ul class="footer-links">
           <li><i data-lucide="mail"></i> Rodrumming@outlook.com</li>
-          <li><i data-lucide="video"></i> Lessons via Zoom</li>
+          <li><i data-lucide="video"></i> Lessons via Microsoft Teams</li>
         </ul>
       </div>
     </div>
