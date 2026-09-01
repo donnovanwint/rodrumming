@@ -199,6 +199,14 @@
               <textarea id="message" name="message" placeholder="Goals, focus areas, equipment, etc."></textarea>
             </div>
 
+            <div class="field">
+              <label for="math_answer">Quick check — what's <span id="math-question">…</span>? *</label>
+              <input type="text" id="math_answer" name="math_answer" inputmode="numeric" autocomplete="off" placeholder="Your answer" required>
+              <input type="hidden" id="math_num1" name="math_num1">
+              <input type="hidden" id="math_num2" name="math_num2">
+              <input type="hidden" id="form_started_at" name="form_started_at">
+            </div>
+
             <button type="submit" class="btn btn-primary btn-block">
               Send Request <i data-lucide="arrow-right"></i>
             </button>

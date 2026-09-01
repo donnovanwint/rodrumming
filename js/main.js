@@ -48,6 +48,30 @@ document.addEventListener('DOMContentLoaded', function () {
      the request to Rodrumming@outlook.com via Resend. --- */
   var form = document.getElementById('booking-form');
   if (form) {
+
+    // Simple human-check: a randomized addition question. The two numbers ride
+    // along as hidden fields so the server can verify the answer itself — a
+    // bot posting straight to /api/contact without ever rendering this page
+    // won't have them. A form-load timestamp rides along too, so near-instant
+    // submissions (script filling every field in one shot) can be flagged.
+    var mathQuestionEl = document.getElementById('math-question');
+    var mathNum1El = document.getElementById('math_num1');
+    var mathNum2El = document.getElementById('math_num2');
+    var startedAtEl = document.getElementById('form_started_at');
+
+    function newMathQuestion() {
+      if (!mathQuestionEl || !mathNum1El || !mathNum2El) return;
+      var a = 1 + Math.floor(Math.random() * 9);
+      var b = 1 + Math.floor(Math.random() * 9);
+      mathQuestionEl.textContent = a + ' + ' + b;
+      mathNum1El.value = a;
+      mathNum2El.value = b;
+      var answerEl = document.getElementById('math_answer');
+      if (answerEl) answerEl.value = '';
+      if (startedAtEl) startedAtEl.value = Date.now();
+    }
+    newMathQuestion();
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -75,7 +99,11 @@ document.addEventListener('DOMContentLoaded', function () {
         lesson_length: formData.get('lesson_length') || '',
         preferred_days: formData.getAll('preferred_days'),
         time_range: formData.get('time_range') || '',
-        message: formData.get('message') || ''
+        message: formData.get('message') || '',
+        math_num1: formData.get('math_num1') || '',
+        math_num2: formData.get('math_num2') || '',
+        math_answer: formData.get('math_answer') || '',
+        form_started_at: formData.get('form_started_at') || ''
       };
 
       if (submitBtn) {
@@ -102,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(function () {
           setStatus("Thanks — your request is in! I'll follow up by email shortly to confirm a time.", false);
           form.reset();
+          newMathQuestion();
         })
         .catch(function (err) {
           setStatus((err && err.message) || 'Something went wrong. Please email Rodrumming@outlook.com directly.', true);

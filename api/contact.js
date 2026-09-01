@@ -54,6 +54,30 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ ok: true });
   }
 
+  // Human-check: the two numbers behind the "what's X + Y?" field. A bot
+  // posting straight to this endpoint (skipping the page entirely) won't
+  // have real values here, so this alone blocks most spam. Respond with a
+  // normal validation error, since real visitors occasionally mistype it.
+  const mathNum1 = parseInt(body.math_num1, 10);
+  const mathNum2 = parseInt(body.math_num2, 10);
+  const mathAnswer = parseInt(body.math_answer, 10);
+  if (
+    !Number.isInteger(mathNum1) ||
+    !Number.isInteger(mathNum2) ||
+    !Number.isInteger(mathAnswer) ||
+    mathAnswer !== mathNum1 + mathNum2
+  ) {
+    return res.status(400).json({ error: "That verification answer doesn't look right — please try again." });
+  }
+
+  // Submitted implausibly fast for a human to have filled out this form —
+  // silently accept without sending, mirroring the honeypot above, so
+  // scripted bots see success and don't adapt.
+  const startedAt = parseInt(body.form_started_at, 10);
+  if (Number.isInteger(startedAt) && Date.now() - startedAt < 1500) {
+    return res.status(200).json({ ok: true });
+  }
+
   const name = typeof body.name === 'string' ? body.name.trim() : '';
   const email = typeof body.email === 'string' ? body.email.trim() : '';
   const phone = typeof body.phone === 'string' ? body.phone.trim() : '';
