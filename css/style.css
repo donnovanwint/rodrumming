@@ -10,8 +10,8 @@
   --ink: #14171A;
   --ink-soft: #4B5157;
   --ink-faint: #868C93;
-  --accent: #FF6300;
-  --accent-dark: #CC4E00;
+  --accent: #E65A00;
+  --accent-dark: #B74600;
   --accent-ink: #FFFFFF;
   --line: #E4E7EC;
   --focus: #1F7A6C;
@@ -108,7 +108,7 @@ p {
   right: 0.05em;
   bottom: -0.1em;
   height: 0.16em;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 14 Q 25 4, 50 14 T 100 14 T 150 14 T 198 14' fill='none' stroke='%23FF6300' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 14 Q 25 4, 50 14 T 100 14 T 150 14 T 198 14' fill='none' stroke='%23E65A00' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
