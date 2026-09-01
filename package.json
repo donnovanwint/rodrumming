@@ -2,7 +2,7 @@
   "name": "rodrumming",
   "private": true,
   "version": "1.0.0",
-  "description": "Rodrumming — static marketing site with a Vercel serverless function for the contact form.",
+  "description": "RoDrumming — static marketing site with a Vercel serverless function for the contact form.",
   "engines": {
     "node": ">=18"
   }

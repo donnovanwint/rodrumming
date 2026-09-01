@@ -1,4 +1,4 @@
-// Rodrumming — shared front-end behavior
+// RoDrumming — shared front-end behavior
 // Nav toggle, GSAP scroll reveals, animated snare/stick illustration, FAQ accordion.
 
 document.addEventListener('DOMContentLoaded', function () {

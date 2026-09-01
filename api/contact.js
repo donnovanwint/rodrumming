@@ -38,6 +38,7 @@ const LEVEL_LABELS = {
 
 const PLATFORM_LABELS = {
   teams: 'Microsoft Teams',
+  zoom: 'Zoom',
   other: 'Other'
 };
 
@@ -107,7 +108,7 @@ module.exports = async function handler(req, res) {
     .split(',')
     .map((addr) => addr.trim())
     .filter(Boolean);
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || 'Rodrumming Website <onboarding@resend.dev>';
+  const fromEmail = process.env.CONTACT_FROM_EMAIL || 'RoDrumming Website <onboarding@resend.dev>';
 
   const html = `
     <h2 style="margin:0 0 16px;">New lesson request</h2>
